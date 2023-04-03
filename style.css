@@ -16,7 +16,14 @@
   @apply hover:underline;
 }
 
+.mega-menu {
+  @apply opacity-0;
+  z-index: -11;
+  transition: 0s;
+  transition-delay: 0.2s;
+}
 
-.shop-now-button:hover + .megamenu {
-  @apply bg-red-400;
+.shop-now-button:hover .mega-menu {
+  @apply opacity-100;
+  z-index: 50;
 }

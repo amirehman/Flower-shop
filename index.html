@@ -9,31 +9,144 @@
   <body>
     <div id="site-wrapper">
 
-      <div class="header py-10">
+      <div class="header py-10" x-data="{ isMenuActive: true }" 
+      @resize.window="
+      width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+      if (width < 1024) {
+        isMenuActive = false
+      }else{
+        isMenuActive = true
+      }
+      "
+      x-init="
+      width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+      if (width < 1024) {
+        isMenuActive = false
+      }else{
+        isMenuActive = true
+      }
+      "
+      >
         <div class="t-container">
-          <div class="flex items-center justify-between relative">
+          <div class="flex items-center justify-between lg:relative">
             
             <div class="logo">
               <img src="./images/logo.png" alt="logo" class="w-40 xl:w-48">
             </div>
             <!-- logo -->
 
-            <div class="lg:flex items-center hidden">
+            <div :class="isMenuActive ? 'lg:flex' : 'hidden' " class="items-center bg-white border-b lg:border-0 shadow lg:shadow-none absolute lg:static left-0 top-32 w-full lg:w-auto z-50 p-5 lg:p-0">
 
               <nav>
-                <ul class="flex items-center font-medium">
-                  <li> <a href="#" class="hover:bg-gray-100 px-4 py-1 rounded-full inline-block"> Deals </a> </li>
-                  <li> <a href="#" class="hover:bg-gray-100 px-4 py-1 rounded-full inline-block"> Season </a> </li>
-                  <li> <a href="#" class="show-menga-menu shop-now-button px-4 py-1 rounded-full inline-block bg-t-primary text-white"> Shop Now </a> </li>
-                  <li> <a href="#" class="hover:bg-gray-100 px-4 py-1 rounded-full inline-block"> Our Difference </a> </li>
-                  <li> <a href="#" class="hover:bg-gray-100 px-4 py-1 rounded-full inline-block"> Sign In </a> </li>
+                <ul class="lg:flex items-center space-y-2 lg:space-y-0">
+                  <li> <a href="#" class="hover:bg-gray-100 px-4 py-1 rounded lg:rounded-full block lg:inline-block"> Deals </a> </li>
+                  <li> <a href="#" class="hover:bg-gray-100 px-4 py-1 rounded lg:rounded-full block lg:inline-block"> Season </a> </li>
+                  <li class="shop-now-button"> <a href="#" class="show-menga-menu px-4 py-1 rounded lg:rounded-full block lg:inline-block bg-t-primary text-white"> Shop Now </a>
+                  
+                    <ul id="mega-menu">
+                      <li>
+                        <div class="mega-menu absolute w-full border border-gray-200 bg-stone-50 top-0 lg:top-[100%] left-0 p-5 shadow-xl rounded-lg">
+                          <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                            
+                            <div class="w-full">
+                              <div class="font-semibold text-lg">By Category</div>
+                              <ul>
+                                <li> <a href="#" class="mega-menu-link"> Flower </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> Rose </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> Greenery </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> Plant </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> Etc. </a> </li>
+                              </ul>
+                            </div>
+                            <!-- mega menu grid item -->
+            
+                            <div class="w-full">
+                              <div class="font-semibold text-lg">By Supplier</div>
+                              <ul>
+                                <li> <a href="#" class="mega-menu-link"> 1 </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> 2 </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> 3 </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> 4 </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> 5 </a> </li>
+                              </ul>
+                            </div>
+                            <!-- mega menu grid item -->
+            
+                            <div class="w-full">
+                              <div class="font-semibold text-lg">By Country of Origin</div>
+                              <ul>
+                                <li> <a href="#" class="mega-menu-link"> 1 </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> 2 </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> 3 </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> 4 </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> 5 </a> </li>
+                              </ul>
+                            </div>
+                            <!-- mega menu grid item -->
+            
+            
+                            <div class="w-full">
+                              <div class="font-semibold text-lg">By Flower</div>
+                              <ul class="grid grid-flow-row-dense grid-cols-2 grid-rows-8">
+                                <li> <a href="#" class="mega-menu-link"> Astrantia </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> Lily </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> Gypso </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> Tulip </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> Gerbera </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> Calla </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> Delphinlum </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> Peaonea </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> Eucalytus </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> Solidago </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> Pistaclia </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> Viburnum </a> </li>
+                              </ul>
+                            </div>
+                            <!-- mega menu grid item -->
+            
+                            <div class="w-full">
+                              <div class="font-semibold text-lg">By Color</div>
+                              <ul>
+                                <li> <a href="#" class="mega-menu-link"> White </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> Red </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> Blue </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> Green </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> Pink </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> Purple </a> </li>
+                              </ul>
+                            </div>
+                            <!-- mega menu grid item -->
+            
+            
+                            <div class="w-full">
+                              <div class="font-semibold text-lg">By Size</div>
+                              <ul>
+                                <li> <a href="#" class="mega-menu-link"> 1 </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> 2 </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> 3 </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> 4 </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> 5 </a> </li>
+                                <li> <a href="#" class="mega-menu-link"> 6 </a> </li>
+                              </ul>
+                            </div>
+                            <!-- mega menu grid item -->
+            
+                          </div>
+                        </div>
+                        <!-- megamenu -->
+                      </li>
+                    </ul>
+
+                  </li>
+                  <li> <a href="#" class="hover:bg-gray-100 px-4 py-1 rounded lg:rounded-full block lg:inline-block"> Our Difference </a> </li>
+                  <li> <a href="#" class="hover:bg-gray-100 px-4 py-1 rounded lg:rounded-full block lg:inline-block"> Sign In </a> </li>
                 </ul>
               </nav>
               <!-- navbar -->
               
-              <div class="search">
+              <div class="search hidden lg:block">
                 <div class='max-w-md mx-auto'>
-                  <div class="relative flex items-center w-full h-8 border border-gray-300 focus-within:border-gray-500 bg-white overflow-hidden">
+                  <div class="relative flex items-center w-full h-8 border border-gray-300 focus-within:border-gray-500 bg-white overflow-hidden rounded">
                       <input
                       class="peer h-full w-full outline-none text-sm text-gray-700 pl-2"
                       type="text"
@@ -50,7 +163,7 @@
               </div>
               <!-- search -->
 
-              <div class="cart">
+              <div class="cart mt-2 lg:mt-0">
                 <button href="" class="px-4 py-1 rounded-full inline-block">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
@@ -62,102 +175,14 @@
             </div>
             <!-- right side -->
 
-            <button class="burger-menu block lg:hidden">
+            <button class="burger-menu block lg:hidden" @click="isMenuActive = !isMenuActive">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
               </svg>
             </button>
             
 
-            <div id="mega-menu" class="mega-menu hidden absolute w-full border border-gray-200 bg-stone-50 top-[100%] left-0 p-5 z-50 shadow-xl rounded-lg">
-              <div class="grid grid-cols-3 gap-10">
-                
-                <div class="w-full">
-                  <div class="font-semibold text-lg">By Category</div>
-                  <ul>
-                    <li> <a href="#" class="mega-menu-link"> Flower </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> Rose </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> Greenery </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> Plant </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> Etc. </a> </li>
-                  </ul>
-                </div>
-                <!-- mega menu grid item -->
-
-                <div class="w-full">
-                  <div class="font-semibold text-lg">By Supplier</div>
-                  <ul>
-                    <li> <a href="#" class="mega-menu-link"> 1 </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> 2 </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> 3 </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> 4 </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> 5 </a> </li>
-                  </ul>
-                </div>
-                <!-- mega menu grid item -->
-
-                <div class="w-full">
-                  <div class="font-semibold text-lg">By Country of Origin</div>
-                  <ul>
-                    <li> <a href="#" class="mega-menu-link"> 1 </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> 2 </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> 3 </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> 4 </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> 5 </a> </li>
-                  </ul>
-                </div>
-                <!-- mega menu grid item -->
-
-
-                <div class="w-full">
-                  <div class="font-semibold text-lg">By Flower</div>
-                  <ul class="grid grid-flow-row-dense grid-cols-2 grid-rows-8">
-                    <li> <a href="#" class="mega-menu-link"> Astrantia </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> Lily </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> Gypso </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> Tulip </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> Gerbera </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> Calla </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> Delphinlum </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> Peaonea </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> Eucalytus </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> Solidago </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> Pistaclia </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> Viburnum </a> </li>
-                  </ul>
-                </div>
-                <!-- mega menu grid item -->
-
-                <div class="w-full">
-                  <div class="font-semibold text-lg">By Color</div>
-                  <ul>
-                    <li> <a href="#" class="mega-menu-link"> White </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> Red </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> Blue </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> Green </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> Pink </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> Purple </a> </li>
-                  </ul>
-                </div>
-                <!-- mega menu grid item -->
-
-
-                <div class="w-full">
-                  <div class="font-semibold text-lg">By Size</div>
-                  <ul>
-                    <li> <a href="#" class="mega-menu-link"> 1 </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> 2 </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> 3 </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> 4 </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> 5 </a> </li>
-                    <li> <a href="#" class="mega-menu-link"> 6 </a> </li>
-                  </ul>
-                </div>
-                <!-- mega menu grid item -->
-
-              </div>
-            </div>
-            <!-- megamenu -->
+            
 
           </div>
           <!-- mega menu relative -->
@@ -168,7 +193,7 @@
 
 
       <section class="t-container">
-        <div class="lg:text-lg h-32 flex items-center justify-center bg-gray-100 rounded-2xl p-10 text-center">
+        <div class="h-32 flex items-center justify-center bg-gray-50 rounded p-10 text-center">
           Key advantages of buying from Camelia, services offerieng provided payment method.
         </div>
       </section>
@@ -177,7 +202,7 @@
 
       <section class="t-container mt-10">
         <div class="banner relative">
-          <div class="absolute inset-0 flex items-center justify-between z-10">
+          <div class="absolute inset-0 flex items-center justify-between z-10 lg:z-0">
             <button class="lg:-ml-16 text-gray-400 hover:text-gray-600  prev-siema">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -317,6 +342,9 @@
             </a>
             <h2 class="uppercase font-semibold text-2xl text-t-primary leading-tight">WEDDINGS <br> <span class="opacity-0">.</span></h2>
             <p class="text-sm">Camelia are connoisseurs of beauty and timeless class, make your special day even more special...</p>
+            <div>
+              <a href="#" class="border border-t-primary hover:text-t-primary hover:bg-transparent px-5 py-2 rounded bg-t-primary text-white inline-block mt-3">Exlore</a>
+            </div>
           </div>
           <!-- serive -->
           
@@ -325,7 +353,10 @@
               <img src="./images/services/2.jpg" alt="image" class="w-full h-full rounded">
             </a>
             <h2 class="uppercase font-semibold text-2xl text-t-primary leading-tight">HOTEL AND <br> CORPORATE</h2>
-            <p class="text-sm">Camelia are connoisseurs of beauty and timeless class, make your special day even more special...</p>
+            <p class="text-sm">Custom designs and floral arrangement to elevate your reception, lobby or office spaces.</p>
+            <div>
+              <a href="#" class="border border-t-primary hover:text-t-primary hover:bg-transparent px-5 py-2 rounded bg-t-primary text-white inline-block mt-3">Exlore</a>
+            </div>
           </div>
           <!-- serive -->
           
@@ -335,6 +366,9 @@
             </a>
             <h2 class="uppercase font-semibold text-2xl text-t-primary leading-tight">INDOOR <br> LANDSCAPING</h2>
             <p class="text-sm">Camelia are connoisseurs of beauty and timeless class, make your special day even more special...</p>
+            <div>
+              <a href="#" class="border border-t-primary hover:text-t-primary hover:bg-transparent px-5 py-2 rounded bg-t-primary text-white inline-block mt-3">Exlore</a>
+            </div>
           </div>
           <!-- serive -->
           
