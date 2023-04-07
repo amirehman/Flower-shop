@@ -9,7 +9,7 @@
 }
 
 .t-container {
-  @apply max-w-6xl px-5 xl:px-0 mx-auto;
+  @apply w-full lg:w-[80%] px-5 xl:px-0 mx-auto;
 }
 
 .mega-menu-link {
@@ -17,13 +17,13 @@
 }
 
 .mega-menu {
-  @apply opacity-0;
+  @apply opacity-0 hidden;
   z-index: -11;
   transition: 0s;
   transition-delay: 0.2s;
 }
 
 .shop-now-button:hover .mega-menu {
-  @apply opacity-100;
+  @apply opacity-100 block;
   z-index: 50;
 }
